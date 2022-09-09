@@ -6,7 +6,9 @@
   "scripts": {
     "build": "rollup -c",
     "build-watch": "rollup -c -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently --kill-others \"npm run build-watch\" \"npx http-server dist\";",
+    "esbuild": "esbuild src/main.ts --bundle --outfile=esdist/main.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +16,9 @@
     "@rollup/plugin-html": "^0.2.4",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-typescript": "^8.5.0",
+    "concurrently": "^7.4.0",
+    "esbuild": "^0.15.7",
+    "http-server": "^14.1.1",
     "rollup": "^2.79.0",
     "rollup-plugin-terser": "^7.0.2"
   },
